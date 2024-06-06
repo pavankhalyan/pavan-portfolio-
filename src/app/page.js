@@ -16,7 +16,7 @@ export default function Home() {
 
         const texts = [
             "Pavan Khalyan ;)",
-            "Coder",
+            "Programmer",
             "Freelancer",
             "Photographer",
             "Video Editor",
@@ -93,16 +93,28 @@ export default function Home() {
         animate();
 
         return () => {
-            // Cleanup function if needed (e.g., to stop animation)
         };
     }, []);
 
-    return (
-        <main>
-            <div id="container">
-                <span id = "text">hello,i'm</span> 
-                <span id="text1"></span>
+    return ( 
+        <main>  
+            <div id ='navbar' className='h-20 flex justify-center items-center ml-8'> 
+              <div className=' space-x-12 px-6 py-3 rounded-full bg-white bg-gradient-to-tr from-pink-300 to-blue-400 fixed'   > 
+                <span>Home </span> 
+                <span>Skills </span> 
+                <span>About </span>
+                <span>Contact Me </span> 
+
+              </div>
+            
+            
+            </div>
+             
+
+            <div id="container"> 
+                 <h1> hello <span id="text1"></span> </h1>
                 <span id="text2"></span>
+                 
             </div>
 
             <svg id="filters">
