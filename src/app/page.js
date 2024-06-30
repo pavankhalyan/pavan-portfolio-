@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import React, { useEffect } from 'react';
-import "../app/components/text.css"
+import "../app/components/text.css";
 
 export default function Home() {
     useEffect(() => {
@@ -19,7 +19,7 @@ export default function Home() {
             "Programmer",
             "Freelancer",
             "Photographer",
-            "Video Editor",
+            "Video Editor"
         ];
 
         const morphTime = 1;
@@ -42,19 +42,24 @@ export default function Home() {
             if (fraction > 1) {
                 cooldown = cooldownTime;
                 fraction = 1;
+                textIndex++;
             }
 
             setMorph(fraction);
         }
 
         function setMorph(fraction) {
+            const scale = 1 + (1 - fraction) * 0.100; // Adjust scaling factor as needed
+        
             elts.text2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
             elts.text2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
-
+            elts.text2.style.transform = `scale(${scale})`;
+        
             fraction = 1 - fraction;
             elts.text1.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
             elts.text1.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
-
+            elts.text1.style.transform = `scale(${scale})`;
+        
             elts.text1.textContent = texts[textIndex % texts.length];
             elts.text2.textContent = texts[(textIndex + 1) % texts.length];
         }
@@ -92,40 +97,37 @@ export default function Home() {
 
         animate();
 
-        return () => {
-        };
+        return () => {};
     }, []);
 
-    return ( 
-        <main>  
-            <div id ='navbar' className='h-20 flex justify-center items-center ml-8'> 
-              <div className=' space-x-12 px-6 py-3 rounded-full bg-white bg-gradient-to-tr from-pink-300 to-blue-400 fixed'   > 
-                <span>Home </span> 
-                <span>Skills </span> 
-                <span>About </span>
-                <span>Contact Me </span> 
-
-              </div>
-            
-            
+    return (
+        <main>
+            <div id='navbar' className='h-20 flex justify-center items-center ml-8'>
+                <div className='space-x-12 px-6 py-3 rounded-full bg-white bg-gradient-to-tr from-pink-300 to-blue-400 fixed'>
+                    <span>Home</span>
+                    <span>Skills</span>
+                    <span>About</span>
+                    <span>Contact Me</span>
+                </div>
             </div>
-             
 
-            <div id="container"> 
-                 <h1> hello <span id="text1"></span> </h1>
-                <span id="text2"></span>
-                 
+            <div id="container" className="text-left middle-screen">
+                <h1>
+                    Hello, I am <span id="text1"></span><span id="text2" className="invisible"></span>
+                </h1>
             </div>
 
             <svg id="filters">
                 <defs>
                     <filter id="threshold">
-                        <feColorMatrix in="SourceGraphic"
+                        <feColorMatrix
+                            in="SourceGraphic"
                             type="matrix"
                             values="1 0 0 0 0
                                     0 1 0 0 0
                                     0 0 1 0 0
-                                    0 0 0 255 -140" />
+                                    0 0 0 255 -140"
+                        />
                     </filter>
                 </defs>
             </svg>
