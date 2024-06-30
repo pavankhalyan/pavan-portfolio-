@@ -11,8 +11,8 @@ html {
     height: 80pt;
     top: 0;
     bottom: 0;
-    filter: url(#threshold) blur(0.6px);
-    left: 10%;
+    filter: url(#threshold) blur(0.10px);
+    left: 2%;
     transform: translateY(-50%);
     font-size: 2.5rem; /* Adjust the size as needed */
     color: #333; /* Dark font color */
@@ -35,4 +35,11 @@ html {
 
 #text2.invisible {
     display: none;
+}
+
+.gradient-text {
+    background: linear-gradient(to right, #d1547cf8, #a86bc7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
 }
